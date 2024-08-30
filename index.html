@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - on air mic switch</title>
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,8 +11,11 @@
         }
 
         #image {
-            width: 300px;
+            width: 100%;
             height: auto;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -34,11 +27,11 @@
 
 <script>
     // Set the specific times for the image swap
-    const targetDay = new Date().getDay(); // Today's day
-    const startHour = 13; // Start time: 1:42 PM (13:42 in 24-hour format)
-    const startMinute = 42;
-    const endHour = 13; // End time: 1:45 PM (13:45 in 24-hour format)
-    const endMinute = 45;
+    const targetDay = 3; // 0 = Sunday, 1 = Monday, ..., 3 = Wednesday, 6 = Saturday
+    const startHour = 20; // Start time: 8:00 PM (20:00 in 24-hour format)
+    const startMinute = 0;
+    const endHour = 22; // End time: 10:30 PM (22:30 in 24-hour format)
+    const endMinute = 30;
 
     // Image sources
     const defaultImage = "https://static.wixstatic.com/media/7b5caa_84c65a275e9b4e7285a611162db0bfc3~mv2.webp";
@@ -60,8 +53,8 @@
         }
     }
 
-    // Check the time every 10 seconds (increased frequency for testing)
-    setInterval(swapImage, 10000);
+    // Check the time every 30 seconds
+    setInterval(swapImage, 30000);
 
     // Initial check when the page loads
     swapImage();
@@ -69,7 +62,4 @@
 
 </body>
 </html>
-<!-- partial -->
-  
-</body>
-</html>
+
