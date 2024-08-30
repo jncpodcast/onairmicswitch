@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - on air mic switch</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Swap</title>
+    <style>
+        #image-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #image {
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="image-container">
+    <img id="image" src="https://static.wixstatic.com/media/7b5caa_84c65a275e9b4e7285a611162db0bfc3~mv2.webp" alt="Default Image">
+</div>
+
+<script>
+    // Set the specific times for the image swap
+    const targetDay = new Date().getDay(); // Today's day
+    const startHour = 13; // Start time: 1:42 PM (13:42 in 24-hour format)
+    const startMinute = 42;
+    const endHour = 13; // End time: 1:45 PM (13:45 in 24-hour format)
+    const endMinute = 45;
+
+    // Image sources
+    const defaultImage = "https://static.wixstatic.com/media/7b5caa_84c65a275e9b4e7285a611162db0bfc3~mv2.webp";
+    const specialImage = "https://static.wixstatic.com/media/7b5caa_da2fbd18dc8948918c5661e8a37583c8~mv2.png";
+
+    function swapImage() {
+        const now = new Date();
+        const currentDay = now.getDay();
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+
+        // Check if the current time is within the target range
+        if (currentDay === targetDay &&
+            ((currentHour > startHour || (currentHour === startHour && currentMinute >= startMinute)) &&
+            (currentHour < endHour || (currentHour === endHour && currentMinute <= endMinute)))) {
+            document.getElementById('image').src = specialImage;
+        } else {
+            document.getElementById('image').src = defaultImage;
+        }
+    }
+
+    // Check the time every 10 seconds (increased frequency for testing)
+    setInterval(swapImage, 10000);
+
+    // Initial check when the page loads
+    swapImage();
+</script>
+
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
